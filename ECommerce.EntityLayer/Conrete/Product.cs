@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Conrete
 {
-    public class Urun : BaseEntity
+    public class Product : BaseEntity
     {
         public string Ad { get; set; }
         public decimal Fiyat { get; set; }
@@ -14,11 +14,11 @@ namespace ECommerce.EntityLayer.Conrete
         public string Aciklama { get; set; }
         public string? Resim { get; set; }
         public string? KisaAciklama { get; set; }
-        public virtual ICollection<SiparisDetay> SiparisDetaylari { get; set; }
+        public virtual ICollection<OrderDetail> SiparisDetaylari { get; set; }
 
-        public Urun()
+        public Product()
         {
-            SiparisDetaylari = new HashSet<SiparisDetay>();
+            SiparisDetaylari = new HashSet<OrderDetail>();
         }
     }
 }

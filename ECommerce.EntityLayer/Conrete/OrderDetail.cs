@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Conrete
 {
-    public class SiparisDetay : BaseEntity
+    public class OrderDetail : BaseEntity
     {
-        public int SiparisId { get; set; }
+        public int OrderDetailId { get; set; }
         public int UrunId { get; set; }
         public int Miktar { get; set; }
         public decimal BirimFiyat { get; set; }
         public decimal ToplamFiyat { get; set; }
         public string? Not { get; set; }
-        public virtual Siparis Siparis { get; set; }
-        public virtual Urun Urun { get; set; }
+        public virtual Order Siparis { get; set; }
+        public virtual Product Urun { get; set; }
     }
 
     public enum SiparisDurumu

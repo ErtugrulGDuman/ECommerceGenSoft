@@ -6,23 +6,21 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Conrete
 {
-    public class Siparis : BaseEntity
+    public class Order : BaseEntity
     {
-        public int KullaniciId { get; set; }
+        public int OrderId { get; set; }
         public DateTime SiparisTarihi { get; set; } = DateTime.Now;
         public decimal ToplamTutar { get; set; }
         public string SiparisNumarasi { get; set; }
         public SiparisDurumu SiparisDurumu { get; set; }
-
         public string TeslimatAdresi { get; set; }
         public string? TeslimatNotu { get; set; }
+        public virtual User Kullanici { get; set; }
+        public virtual ICollection<OrderDetail> SiparisDetaylari { get; set; }
 
-        public virtual Kullanici Kullanici { get; set; }
-        public virtual ICollection<SiparisDetay> SiparisDetaylari { get; set; }
-
-        public Siparis()
+        public Order()
         {
-            SiparisDetaylari = new HashSet<SiparisDetay>();
+            SiparisDetaylari = new HashSet<OrderDetail>();
             SiparisNumarasi = $"SP{DateTime.Now:yyyyMMddHHmmss}";
         }
     }

@@ -15,17 +15,17 @@ namespace ECommerce.DataAccessLayer.Context
         {
         }
 
-        public DbSet<Kullanici> Kullanicilar { get; set; }
-        public DbSet<Urun> Urunler { get; set; }
-        public DbSet<Siparis> Siparisler { get; set; }
-        public DbSet<SiparisDetay> SiparisDetaylar { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Kullanici Konfigürasyonu
-            modelBuilder.Entity<Kullanici>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("Kullanicilar");
 
@@ -55,7 +55,7 @@ namespace ECommerce.DataAccessLayer.Context
             });
 
             // Urun Konfigürasyonu
-            modelBuilder.Entity<Urun>(entity =>
+            modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Urunler");
 
@@ -80,7 +80,7 @@ namespace ECommerce.DataAccessLayer.Context
             });
 
             // Siparis Konfigürasyonu
-            modelBuilder.Entity<Siparis>(entity =>
+            modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Siparisler");
 
@@ -104,12 +104,12 @@ namespace ECommerce.DataAccessLayer.Context
                 // Kullanici ile ilişki
                 entity.HasOne(d => d.Kullanici)
                     .WithMany(p => p.Siparisler)
-                    .HasForeignKey(d => d.KullaniciId)
+                    .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
             // SiparisDetay Konfigürasyonu
-            modelBuilder.Entity<SiparisDetay>(entity =>
+            modelBuilder.Entity<OrderDetail>(entity =>
             {
                 entity.ToTable("SiparisDetaylar");
 
@@ -129,7 +129,7 @@ namespace ECommerce.DataAccessLayer.Context
                 // Siparis ile ilişki
                 entity.HasOne(d => d.Siparis)
                     .WithMany(p => p.SiparisDetaylari)
-                    .HasForeignKey(d => d.SiparisId)
+                    .HasForeignKey(d => d.OrderDetailId)
                     .OnDelete(DeleteBehavior.Cascade);
 
                 // Urun ile ilişki

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Conrete
 {
-    public class Kullanici : BaseEntity
+    public class User : BaseEntity
     {
+        public int UserId { get; set; }
         public string Email { get; set; }
         public string Sifre { get; set; }
         public string Ad { get; set; }
@@ -15,11 +16,11 @@ namespace ECommerce.EntityLayer.Conrete
         public string Telefon { get; set; }
         public DateTime KayitTarihi { get; set; } = DateTime.Now;
 
-        public virtual ICollection<Siparis> Siparisler { get; set; }
+        public virtual ICollection<Order> Siparisler { get; set; }
 
-        public Kullanici()
+        public User()
         {
-            Siparisler = new HashSet<Siparis>();
+            Siparisler = new HashSet<Order>();
         }
     }
 }
