@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.DataAccessLayer\ECommerce.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\ECommerce.DTOLayer\ECommerce.DTOLayer.csproj" />
+    <ProjectReference Include="..\ECommerce.EntityLayer\ECommerce.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
